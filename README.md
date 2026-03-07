@@ -1,15 +1,3 @@
-Great — since this is **for an academic submission**, the README should look **professional, structured, and easy for professors to evaluate**. Below is a **clean academic-style GitHub README.md** with:
-
-* Table of Contents
-* Clear sections
-* Proper formatting
-* Professional explanation of your code
-* Compliance with your PDF requirements 
-
-You can **copy this directly into your GitHub `README.md`**.
-
----
-
 # MotorPH Payroll System
 
 A Java-based payroll system that processes employee salary information using attendance records stored in CSV files.
