@@ -208,7 +208,7 @@ Important project rules:
 1. Open:
 
 ```
-Copy_of_MotorPH_Employee_Data.xlsx
+Attendance.csv
 ```
 
 2. Select sheet:
@@ -375,7 +375,7 @@ Each column represents fields such as:
 
 This method:
 
-* Reads `attendance.csv`
+* Reads `Attendance.csv`
 * Parses each line
 * Stores attendance data in memory
 
