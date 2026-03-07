@@ -18,7 +18,9 @@ The system processes employee attendance records and computes payroll from **Jun
 # Members and Roles
 
 **Ephraim Elayda** — Programmer / Research
+
 **Ashley Mackenzie Ramos** — Research / Project Coordinator
+
 **Ma. Irene Andrea Esguerra** — Research / Project Coordinator
 
 ---
