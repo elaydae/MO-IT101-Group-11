@@ -475,5 +475,3 @@ Employee information includes:
 MotorPH Company Website
 
 [https://sites.google.com/mmdc.mcl.edu.ph/motorph/home](https://sites.google.com/mmdc.mcl.edu.ph/motorph/home)
-
-If you want, I can also show you **3 small improvements professors usually give extra points for on GitHub projects** (most students don’t include them).
