@@ -1,100 +1,189 @@
+Great — since this is **for an academic submission**, the README should look **professional, structured, and easy for professors to evaluate**. Below is a **clean academic-style GitHub README.md** with:
+
+* Table of Contents
+* Clear sections
+* Proper formatting
+* Professional explanation of your code
+* Compliance with your PDF requirements 
+
+You can **copy this directly into your GitHub `README.md`**.
+
+---
+
 # MotorPH Payroll System
 
-## Description
+A Java-based payroll system that processes employee salary information using attendance records stored in CSV files.
 
-**MotorPH Payroll System** is a Java-based payroll system that reads employee and attendance data from CSV files and calculates employee salaries using cutoff periods.
+This system was developed as part of an **academic programming project** that demonstrates payroll computation, file processing, and menu-driven program design without using Object-Oriented Programming.
 
-The program includes:
+---
 
-* Login authentication
-* Employee information lookup
-* Payroll processing for one or all employees
-* Government deduction calculations (SSS, PhilHealth, Pag-IBIG, Withholding Tax)
+# Table of Contents
 
-The system processes employee attendance records and computes payroll from **June to December** following the payroll rules defined in the project requirements. 
+* Description
+* Members and Roles
+* Features
+* Payroll Calculation Rules
+* System Workflow
+* Repository Structure
+* Setup & How to Run
+* Sample Output
+* How the Code Works
+* Employee Coverage
+* References
+
+---
+
+# Description
+
+The **MotorPH Payroll System** is a Java program designed to simulate a basic payroll processing system for a company.
+
+The program reads employee and attendance data from spreadsheet files and calculates salaries based on **cutoff payroll periods**.
+
+The system supports two user roles:
+
+* **Employee** – View employee information
+* **Payroll Staff** – Process payroll for one or all employees
+
+Payroll calculations include:
+
+* Hours worked
+* Gross salary
+* Government deductions
+* Net salary
+
+All computations follow the payroll rules provided in the project specification. 
 
 ---
 
 # Members and Roles
 
-**Ephraim Elayda** — Programmer / Research
-
-**Ashley Mackenzie Ramos** — Research / Project Coordinator
-
-**Ma. Irene Andrea Esguerra** — Research / Project Coordinator
+| Name                      | Role                           |
+| ------------------------- | ------------------------------ |
+| Ephraim Elayda            | Programmer / Research          |
+| Ashley Mackenzie Ramos    | Research / Project Coordinator |
+| Ma. Irene Andrea Esguerra | Research / Project Coordinator |
 
 ---
 
 # Features
 
-* Login authentication system
-* Employee role interface
-* Payroll staff interface
-* Employee information lookup
-* Payroll computation for:
+### Login Authentication
 
-  * One employee
-  * All employees
-* Attendance CSV reading
-* Government deductions computation
-* Payroll output per cutoff period
-* Payroll coverage from **June to December**
+The program requires users to log in before accessing the system.
+
+Valid usernames:
+
+```
+employee
+payroll_staff
+```
+
+Password:
+
+```
+12345
+```
+
+---
+
+### Employee Role
+
+Employees can:
+
+* Enter their **Employee Number**
+* View their personal information
+
+Displayed details include:
+
+* Employee Number
+* Employee Name
+* Birthday
+
+---
+
+### Payroll Staff Role
+
+Payroll staff can:
+
+* Process payroll for **one employee**
+* Process payroll for **all employees**
+
+Payroll reports include:
+
+* Cutoff period
+* Hours worked
+* Gross salary
+* Government deductions
+* Net salary
 
 ---
 
 # Payroll Calculation Rules
 
-## Hours Worked
+## Work Hours
 
-* Only hours between **8:00 AM – 5:00 PM** are counted.
-* Extra hours are **not included**.
-* Example:
+Only hours between **8:00 AM and 5:00 PM** are counted.
 
-  * Login **8:30 AM**, logout **5:30 PM** → **7.5 hours**
-  * Login **8:05 AM**, logout **5:00 PM** → **8 hours**
-* One-hour **lunch break deduction** is applied.
+Examples:
 
-## Gross Pay
+| Login   | Logout  | Hours Counted |
+| ------- | ------- | ------------- |
+| 8:30 AM | 5:30 PM | 7.5 hours     |
+| 8:05 AM | 5:00 PM | 8 hours       |
 
-Gross Pay =
+Rules:
 
-```
-Hours Worked × Hourly Rate
-```
+* Extra hours are **not included**
+* **1 hour lunch break** is deducted
+* No rounding of values is allowed
 
-## Cutoff Periods
+---
 
-Payroll is divided into two cutoff periods:
+## Payroll Cutoff Periods
 
-**1st Cutoff**
+Each month is divided into two payroll periods.
+
+**First Cutoff**
 
 ```
 Day 1 – Day 15
 ```
 
-**2nd Cutoff**
+**Second Cutoff**
 
 ```
 Day 16 – End of Month
 ```
 
-* **1st cutoff:** No deductions applied
-* **2nd cutoff:** All deductions applied
+Rules:
 
-## Deductions
+* First cutoff → **no deductions**
+* Second cutoff → **all deductions applied**
 
-Government deductions are computed using the **combined gross salary of both cutoffs**.
+---
 
-Deductions include:
+## Government Deductions
+
+Deductions are calculated based on the **combined gross salary of both cutoffs**.
+
+The following deductions are included:
 
 * SSS
 * PhilHealth
 * Pag-IBIG
 * Withholding Tax
 
-## Withholding Tax Table
+---
 
-The withholding tax follows the Philippine **TRAIN tax table** based on taxable income after deductions.
+# System Workflow
+
+1. Program starts
+2. User enters **username and password**
+3. System verifies credentials
+4. Menu displayed depending on role
+5. Payroll data processed
+6. Payroll results printed in the console
 
 ---
 
@@ -108,10 +197,11 @@ MotorPH-Payroll-System
 └── README.md
 ```
 
-Rules from the requirement:
+Important project rules:
 
-* Only **one Java file** must exist in the repository.
-* No external libraries are used.
+* Only **one Java file** is allowed
+* No external libraries are used
+* All employee data is embedded in the program
 
 ---
 
@@ -120,20 +210,26 @@ Rules from the requirement:
 ## Prerequisites
 
 * Java JDK 8 or higher
-* Terminal / Command Prompt
+* Terminal or Command Prompt
 * Attendance CSV file
 
 ---
 
 ## Step 1 — Export Attendance CSV
 
-1. Open the spreadsheet
-   **Copy_of_MotorPH_Employee_Data.xlsx**
+1. Open:
 
-2. Select the sheet
-   **Attendance Record**
+```
+Copy_of_MotorPH_Employee_Data.xlsx
+```
 
-3. Export it as:
+2. Select sheet:
+
+```
+Attendance Record
+```
+
+3. Export the sheet as:
 
 ```
 CSV (Comma Delimited)
@@ -149,9 +245,11 @@ attendance.csv
 
 ---
 
-## Step 2 — Compile
+## Step 2 — Compile the Program
 
-Open terminal inside the project folder and run:
+Open terminal inside the project folder.
+
+Run:
 
 ```
 javac MotorPHPayroll.java
@@ -159,7 +257,7 @@ javac MotorPHPayroll.java
 
 ---
 
-## Step 3 — Run
+## Step 3 — Run the Program
 
 ```
 java MotorPHPayroll
@@ -169,7 +267,7 @@ java MotorPHPayroll
 
 # Sample Output
 
-## Invalid Login Example
+## Invalid Login
 
 ```
 Username: admin
@@ -189,21 +287,21 @@ Username: employee
 Password: 12345
 
 EMPLOYEE MENU
-[1] Enter your employee number
-[2] Exit
+1. Enter your employee number
+2. Exit
 ```
 
-If the employee number exists:
+If the employee exists:
 
 ```
-Employee #
-Employee Name
-Birthday
+Employee Number: 10001
+Employee Name: Manuel III Garcia
+Birthday: 10/11/1983
 ```
 
 ---
 
-## Payroll Staff Role Example
+## Payroll Staff Example
 
 ```
 Username: payroll_staff
@@ -214,7 +312,7 @@ PAYROLL STAFF MENU
 2. Exit
 ```
 
-Sub-menu:
+Submenu:
 
 ```
 1. One Employee
@@ -253,69 +351,65 @@ Net Salary:
 
 # How the Code Works
 
-## 1. `main()` — Program Entry Point & Login
+## 1. `main()` — Program Entry Point
 
-Handles:
+Responsible for:
 
-* System startup
-* Username and password validation
-* Role routing
-
-Valid users:
-
-```
-employee
-payroll_staff
-```
-
-Password:
-
-```
-12345
-```
+* Loading employee data
+* Loading attendance records
+* Handling login authentication
+* Routing users to the correct menu
 
 ---
 
 ## 2. `getEmployees()` — Employee Data Storage
 
-Because the requirement states that **no external libraries should be used**, the employee data from:
+Employee records from the spreadsheet are stored inside the program as a **two-dimensional string array**.
+
+Each row represents:
 
 ```
-Copy_of_MotorPH_Employee_Data.xlsx
+One employee record
 ```
 
-is embedded directly inside the program as a **2D String array**.
+Each column represents fields such as:
 
-Each row represents **one employee record**.
-
----
-
-## 3. `loadAttendanceCsv()` — Reading Attendance from File
-
-This function:
-
-* Loads `attendance.csv`
-* Reads attendance records
-* Parses CSV lines
-* Stores them into a 2D array for payroll computation.
+* Employee ID
+* Name
+* Birthday
+* Position
+* Salary
+* Hourly rate
 
 ---
 
-## 4. `calculateHoursWorked()` — Core Time Calculation
+## 3. `loadAttendanceCsv()` — Attendance Data Loader
 
-This method calculates employee working hours by:
+This method:
 
-* Filtering employee ID
-* Filtering date range
-* Parsing login and logout times
-* Limiting work hours between **8 AM – 5 PM**
-* Deducting **1 hour lunch break**
+* Reads `attendance.csv`
+* Parses each line
+* Stores attendance data in memory
 
 ---
 
-## 5. `printFullPayrollForEmployee()` — Full Payroll Across All Months
+## 4. `calculateHoursWorked()` — Time Calculation
 
-This method prints payroll results for:
+This function calculates the number of hours worked by an employee.
+
+The method:
+
+* Filters attendance records by employee ID
+* Checks date ranges
+* Calculates working minutes
+* Applies lunch break deduction
+* Converts minutes to hours
+
+---
+
+## 5. `printFullPayrollForEmployee()`
+
+This method prints payroll data for every month from:
 
 ```
 June
@@ -327,111 +421,71 @@ November
 December
 ```
 
-It calculates:
+For each month it computes:
 
 * First cutoff payroll
 * Second cutoff payroll
-* Monthly deductions
+* Government deductions
 
 ---
 
-## 6. `computeSSS()` — SSS Contribution Lookup
+## 6. Government Deduction Methods
 
-Computes SSS contribution based on the employee's **monthly salary bracket**.
+The system includes separate functions to compute each deduction:
 
----
+### `computeSSS()`
 
-## 7. `computePhilhealth()` — PhilHealth Contribution
+Determines SSS contribution using salary brackets.
 
-PhilHealth is computed using the formula:
+### `computePhilhealth()`
 
-```
-Monthly Salary × 3%
-```
+Calculates PhilHealth contribution based on monthly salary.
 
-Then divided between employer and employee.
+### `computePagibig()`
 
----
+Computes Pag-IBIG contribution with a maximum limit.
 
-## 8. `computePagibig()` — Pag-IBIG Contribution
+### `computeWithholdingTax()`
 
-Contribution rates:
-
-```
-1% for salary ≤ 1500
-2% for salary > 1500
-```
-
-Maximum contribution:
-
-```
-100 pesos
-```
+Calculates tax using the Philippine **TRAIN tax table**.
 
 ---
 
-## 9. `computeWithholdingTax()` — Withholding Tax
+## 7. Helper Functions
 
-Uses the Philippine **TRAIN tax bracket table** to compute employee withholding tax.
+Several helper functions are used for data processing:
 
----
-
-## 10. `parseDate()` and `parseTime()` — String Parsing
-
-These helper functions convert:
-
-```
-Date strings → Integer arrays
-Time strings → Hour & minute values
-```
-
-Used during attendance processing.
-
----
-
-## 11. `findEmployee()` — Employee Lookup
-
-Searches the employee list using:
-
-```
-Employee Number
-```
-
-Returns the matching employee record.
-
----
-
-## 12. `parseCsvLine()` — Robust CSV Parsing
-
-Handles CSV parsing safely by:
-
-* Supporting quoted values
-* Splitting columns correctly
-* Removing unnecessary characters
+| Function         | Purpose                                    |
+| ---------------- | ------------------------------------------ |
+| `parseDate()`    | Converts date strings to numbers           |
+| `parseTime()`    | Converts time strings to hours and minutes |
+| `findEmployee()` | Searches employee records                  |
+| `parseCsvLine()` | Handles CSV parsing safely                 |
 
 ---
 
 # Employee Coverage
 
-The system includes **34 employees** embedded in the program based on the provided employee dataset.
+The system includes **34 employees** embedded in the program.
 
-Each employee record contains:
+Employee information includes:
 
 * Employee ID
-* Name
+* Full Name
 * Birthday
 * Address
-* Government IDs
+* Government ID numbers
 * Position
 * Supervisor
-* Salary information
+* Salary
 * Hourly rate
 
 ---
 
 # References
 
-MotorPH Official Website
+MotorPH Company Website
+
 [https://sites.google.com/mmdc.mcl.edu.ph/motorph/home](https://sites.google.com/mmdc.mcl.edu.ph/motorph/home)
 
-
+If you want, I can also show you **3 small improvements professors usually give extra points for on GitHub projects** (most students don’t include them).
