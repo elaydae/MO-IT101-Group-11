@@ -318,21 +318,21 @@ Employee Name: Rosie Atienza
 Birthday: 09/24/1948
 
 Cutoff Date: June 1 to June 15
-Total Hours Worked:
-Gross Salary:
-Net Salary:
+Total Hours Worked: 75.63333333333334
+Gross Salary: 10129.572333333335
+Net Salary: 10129.572333333335
 
 Cutoff Date: June 16 to June 30
-Total Hours Worked:
-Gross Salary:
+Total Hours Worked: 71.61666666666666
+Gross Salary: 9591.620166666666
 
-SSS:
-PhilHealth:
-Pag-IBIG:
-Tax:
+SSS: 877.5
+PhilHealth: 295.8178875
+Pag-IBIG: 100.0
+Tax:  0.0
 
-Total Deductions:
-Net Salary:
+Total Deductions: 1273.3178874999999
+Net Salary: 8318.302279166666
 ```
 
 ---
