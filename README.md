@@ -9,6 +9,7 @@ This system was developed as part of an **academic programming project** that de
 
 * Description
 * Members and Roles
+* Project Plan & Tracking
 * Features
 * Payroll Calculation Rules
 * System Workflow
@@ -49,7 +50,59 @@ All computations follow the payroll rules provided in the project specification.
 | Ephraim Elayda            | Programmer / Research          |
 | Ashley Mackenzie Ramos    | Research / Project Coordinator |
 | Ma. Irene Andrea Esguerra | Research / Project Coordinator |
+---
+#Project Plan File (Required Submission)
 
+To comply with project documentation requirements, a project plan file (.xlsx) is included in the repository.
+
+📁 Location: https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
+
+This file contains:
+Effort estimation
+Task breakdown
+Timeline (11-week development plan)
+Status tracking (Completed / Ongoing / Pending)
+
+⚠️ Note:
+This file is submitted locally in the repository to ensure verifiable tracking, as required by the project guidelines.
+
+#Effort Estimation & Timeline
+
+The project follows an 11-week development cycle based on the approved proposal.
+| Week     | Task                  | Description                                  |
+| -------- | --------------------- | -------------------------------------------- |
+| Week 1–2 | Requirements Analysis | Review payroll rules and system requirements |
+| Week 3   | System Design         | Plan program flow and structure              |
+| Week 4–6 | Development           | Implement payroll computation logic          |
+| Week 7   | File Handling         | Integrate CSV reading and parsing            |
+| Week 8   | Testing               | Validate payroll calculations                |
+| Week 9   | Debugging             | Fix errors and edge cases                    |
+| Week 10  | Finalization          | Clean code and improve output                |
+| Week 11  | Documentation         | Prepare README, reports, and submission      |
+
+#Task Breakdown & Status Tracking
+
+The table below shows how tasks were tracked throughout the project:
+| Task                | Description                              | Assigned To | Status      |
+| ------------------- | ---------------------------------------- | ----------- | ----------- |
+| Requirements Review | Analyze payroll rules                    | Team        | ✅ Completed |
+| Data Preparation    | Prepare employee dataset                 | Ephraim     | ✅ Completed |
+| Attendance Parsing  | CSV reading implementation               | Ephraim     | ✅ Completed |
+| Hours Calculation   | Compute working hours                    | Ephraim     | ✅ Completed |
+| Payroll Logic       | Gross and net salary computation         | Ephraim     | ✅ Completed |
+| Deductions          | Implement SSS, PhilHealth, Pag-IBIG, Tax | Ephraim     | ✅ Completed |
+| Testing             | Validate outputs                         | Team        | ✅ Completed |
+| Documentation       | README and reports                       | Team        | ✅ Completed |
+
+#Monitoring and Updates
+Project progress was monitored using:
+
+📊 Google Sheets (Effort Estimation & Project Plan)
+💬 Gspace (daily updates)
+📅 Weekly progress meetings
+
+Reference (Project Plan Spreadsheet):
+https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
 ---
 
 # Features
