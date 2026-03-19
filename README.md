@@ -51,7 +51,7 @@ All computations follow the payroll rules provided in the project specification.
 | Ashley Mackenzie Ramos    | Research / Project Coordinator |
 | Ma. Irene Andrea Esguerra | Research / Project Coordinator |
 ---
-#Project Plan File (Required Submission)
+# Project Plan File (Required Submission)
 
 To comply with project documentation requirements, a project plan file (.xlsx) is included in the repository.
 
@@ -66,7 +66,7 @@ Status tracking (Completed / Ongoing / Pending)
 ⚠️ Note:
 This file is submitted locally in the repository to ensure verifiable tracking, as required by the project guidelines.
 
-#Effort Estimation & Timeline
+# Effort Estimation & Timeline
 
 The project follows an 11-week development cycle based on the approved proposal.
 | Week     | Task                  | Description                                  |
@@ -80,7 +80,7 @@ The project follows an 11-week development cycle based on the approved proposal.
 | Week 10  | Finalization          | Clean code and improve output                |
 | Week 11  | Documentation         | Prepare README, reports, and submission      |
 
-#Task Breakdown & Status Tracking
+# Task Breakdown & Status Tracking
 
 The table below shows how tasks were tracked throughout the project:
 | Task                | Description                              | Assigned To | Status      |
@@ -94,7 +94,7 @@ The table below shows how tasks were tracked throughout the project:
 | Testing             | Validate outputs                         | Team        | ✅ Completed |
 | Documentation       | README and reports                       | Team        | ✅ Completed |
 
-#Monitoring and Updates
+# Monitoring and Updates
 Project progress was monitored using:
 
 📊 Google Sheets (Effort Estimation & Project Plan)
