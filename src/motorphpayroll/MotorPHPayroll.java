@@ -5,14 +5,43 @@
 package motorphpayroll;
 
 /**
+ * Author: Ephraim Elayda
+ 
+ * MotorPH Payroll System
+ * ----------------------------------------
+ * This program processes employee payroll using CSV data.
  *
- * @author Ephraim
+ * Features:
+ * - Login authentication (employee / payroll_staff)
+ * - Employee record lookup
+ * - Payroll computation (June–December)
+ * - Government deductions (SSS, PhilHealth, Pag-IBIG, Tax)
+ *
+ * Business Rules:
+ * - Only hours between 8:00 AM and 5:00 PM are counted
+ * - 1-hour lunch break is deducted daily
+ * - First cutoff has NO deductions
+ * - Second cutoff applies ALL deductions
+ *
+ * Data Sources:
+ * - Employee Details.csv
+ * - Attendance.csv
  */
+
 import java.io.*;
 import java.util.*;
 
 public class MotorPHPayroll {
-
+    
+    // ==========================================
+    // CSV COLUMN INDEX CONSTANTS (for readability)
+    // ==========================================
+    static final int EMP_ID = 0;
+    static final int LAST_NAME = 1;
+    static final int FIRST_NAME = 2;
+    static final int BIRTHDAY = 3;
+    static final int HOURLY_RATE = 18;
+    
     // ==========================================================
     // MAIN PROGRAM CONTROLLER
     // Responsible for: login, menu navigation, program start
@@ -22,8 +51,8 @@ public class MotorPHPayroll {
         Scanner scanner = new Scanner(System.in);
 
         // Load data from CSV files
-        String[][] employeeData = loadEmployees("Employee Details.csv");
-        String[][] attendanceData = loadAttendance("Attendance.csv");
+        String[][] employees = loadEmployees("Employee Details.csv");
+        String[][] attendanceRecords = loadAttendance("Attendance.csv");
 
         printSystemHeader();
 
@@ -40,9 +69,9 @@ public class MotorPHPayroll {
         }
 
         if (username.equals("employee")) {
-            runEmployeeMenu(scanner, employeeData);
+            runEmployeeMenu(scanner, employees);
         } else {
-            runPayrollStaffMenu(scanner, employeeData, attendanceData);
+            runPayrollStaffMenu(scanner, employees, attendanceRecords);
         }
     }
 
@@ -68,7 +97,7 @@ public class MotorPHPayroll {
     // Allows employee to view personal details
     // ==========================================================
 
-    static void runEmployeeMenu(Scanner scanner, String[][] employeeData) {
+    static void runEmployeeMenu(Scanner scanner, String[][] attendanceRecords) {
 
         System.out.println("1. Enter your employee number");
         System.out.println("2. Exit the program");
@@ -80,16 +109,16 @@ public class MotorPHPayroll {
         System.out.print("Enter Employee Number: ");
         String employeeId = scanner.nextLine();
 
-        String[] employee = findEmployee(employeeData, employeeId);
+        String[] employee = findEmployee(attendanceRecords, employeeId);
 
         if (employee == null) {
             System.out.println("Employee number does not exist.");
             return;
         }
 
-        System.out.println("Employee Number: " + employee[0]);
-        System.out.println("Employee Name: " + employee[2] + " " + employee[1]);
-        System.out.println("Birthday: " + employee[3]);
+        System.out.println("Employee Number: " + employee[EMP_ID]);
+        System.out.println("Employee Name: " + employee[FIRST_NAME] + " " + employee[LAST_NAME]);
+        System.out.println("Birthday: " + employee[BIRTHDAY]);
     }
 
     // ==========================================================
@@ -99,8 +128,8 @@ public class MotorPHPayroll {
 
     static void runPayrollStaffMenu(
             Scanner scanner,
-            String[][] employeeData,
-            String[][] attendanceData) {
+            String[][] employees,
+            String[][] attendanceRecords) {
 
         System.out.println("1. Process Payroll");
         System.out.println("2. Exit");
@@ -118,20 +147,20 @@ public class MotorPHPayroll {
             System.out.print("Enter employee number: ");
             String employeeId = scanner.nextLine();
 
-            String[] employee = findEmployee(employeeData, employeeId);
+            String[] employee = findEmployee(employees, employeeId);
 
             if (employee == null) {
                 System.out.println("Employee number does not exist.");
                 return;
             }
 
-            processEmployeePayroll(employee, attendanceData);
+            processEmployeePayroll(employee, attendanceRecords);
         }
 
         if (option.equals("2")) {
 
-            for (String[] employee : employeeData) {
-                processEmployeePayroll(employee, attendanceData);
+            for (String[] employee : employees) {
+                processEmployeePayroll(employee, attendanceRecords);
             }
         }
     }
@@ -140,23 +169,49 @@ public class MotorPHPayroll {
     // PAYROLL PROCESSING
     // Responsible for computing employee salary June–December
     // ==========================================================
-
-    static void processEmployeePayroll(String[] employee, String[][] attendanceData) {
+    /**
+    * Calculates total worked hours for an employee within a cutoff period.
+    *
+    * Processes payroll for a single employee from June to December.
+    *
+    * Computes:
+    * - Worked hours per cutoff
+    * - Gross salary
+    * - Government deductions
+    * - Net salary
+    * 
+    * Rules applied:
+    * - Only counts time between 8:00 AM and 5:00 PM
+    * - Applies grace period (<= 8:10 AM treated as 8:00 AM)
+    * - Caps maximum work per day to 8 hours
+    *
+    * @param attendanceData attendance CSV data
+    * @param employeeId employee number
+    * @param month target month
+    * @param startDay cutoff start day
+    * @param endDay cutoff end day
+    * @return total worked hours for the period
+    */
+    static void processEmployeePayroll(String[] employee, String[][] attendanceRecords) {
 
         int startMonth = 6;
         int endMonth = 12;
 
-        double hourlyRate = Double.parseDouble(employee[18]);
+        // Read the year directly from the attendance data so nothing is hardcoded.
+        // The date column is M/D/YYYY, so the year is the third part after splitting on "/".
+        int year = getYearFromAttendance(attendanceRecords, employee[EMP_ID]);
+
+        double hourlyRate = Double.parseDouble(employee[HOURLY_RATE]);
 
         for (int month = startMonth; month <= endMonth; month++) {
 
-            int lastDayOfMonth = getLastDayOfMonth(month);
+            int lastDayOfMonth = getLastDayOfMonth(month, year);
 
             double firstCutoffHours =
-                    calculateWorkedHours(attendanceData, employee[0], month, 1, 15);
+                    calculateWorkedHours(attendanceRecords, employee[0], month, 1, 15);
 
             double secondCutoffHours =
-                    calculateWorkedHours(attendanceData, employee[0], month, 16, lastDayOfMonth);
+                    calculateWorkedHours(attendanceRecords, employee[0], month, 16, lastDayOfMonth);
 
             double firstCutoffGross = firstCutoffHours * hourlyRate;
             double secondCutoffGross = secondCutoffHours * hourlyRate;
@@ -203,6 +258,8 @@ public class MotorPHPayroll {
                     withholdingTax,
                     totalDeductions
             );
+            
+            
         }
     }
 
@@ -212,7 +269,7 @@ public class MotorPHPayroll {
     // ==========================================================
 
     static double calculateWorkedHours(
-            String[][] attendanceData,
+            String[][] attendanceRecords,
             String employeeId,
             int month,
             int startDay,
@@ -220,7 +277,7 @@ public class MotorPHPayroll {
 
         double totalMinutesWorked = 0;
 
-        for (String[] attendanceRow : attendanceData) {
+        for (String[] attendanceRow : attendanceRecords) {
 
             if (!attendanceRow[0].equals(employeeId)) continue;
 
@@ -263,9 +320,33 @@ public class MotorPHPayroll {
         };
     }
 
-    static int getLastDayOfMonth(int month) {
+    // Reads the year from the first matching attendance record for the given employee.
+    // The date column uses M/D/YYYY format, so the year is the third part after splitting on "/".
+    // Returns -1 if no record is found (should not happen with valid data).
+    static int getYearFromAttendance(String[][] attendanceRecords, String employeeId) {
 
-        if (month == 2) return 28;
+        for (String[] row : attendanceRecords) {
+            if (!row[0].equals(employeeId)) continue;
+
+            String[] dateParts = row[3].split("/");
+            if (dateParts.length >= 3) {
+                return Integer.parseInt(dateParts[2].trim());
+            }
+        }
+
+        return -1;
+    }
+
+    // Returns the last calendar day of the given month and year.
+    // Leap year rule: divisible by 4, EXCEPT centuries unless also divisible by 400.
+    // Example: 2024 is a leap year (divisible by 4, not a century) → February has 29 days.
+    static int getLastDayOfMonth(int month, int year) {
+
+        if (month == 2) {
+            boolean isLeapYear = (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
+            return isLeapYear ? 29 : 28;
+        }
+
         if (month == 4 || month == 6 || month == 9 || month == 11) return 30;
 
         return 31;
@@ -274,7 +355,14 @@ public class MotorPHPayroll {
     // ==========================================================
     // GOVERNMENT DEDUCTIONS
     // ==========================================================
-
+   
+    /**
+    * Computes SSS contribution based on salary brackets.
+    *
+    * @param salary monthly gross salary
+    * @return SSS contribution
+    */
+   
     static double computeSSS(double salary) {
 
         if (salary < 3250) return 135;
@@ -325,8 +413,9 @@ public class MotorPHPayroll {
 
         return null;
     }
-
-    static String[][] loadEmployees(String file) throws Exception {
+        // Regex explanation:
+        // Splits CSV correctly even if values contain commas inside quotes
+        static String[][] loadEmployees(String file) throws Exception {
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
         List<String[]> employees = new ArrayList<>();
@@ -428,3 +517,4 @@ public class MotorPHPayroll {
         System.out.println("--------------------------------");
     }
 }
+
