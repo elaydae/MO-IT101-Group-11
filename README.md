@@ -55,7 +55,8 @@ All computations follow the payroll rules provided in the project specification.
 
 To comply with project documentation requirements, a project plan file (.xlsx) is included in the repository.
 
-📁 Location: https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
+📁 Effort Estimation and Project Plan Location: https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
+📁 Project proposal: https://docs.google.com/document/d/1b19nDt9lFxUkoMmdZsrNQftRKb9ow6P2Nwrh_Kzp-Mo/edit?usp=sharing
 
 This file contains:
 Effort estimation
