@@ -267,7 +267,21 @@ public class MotorPHPayroll {
     // HOURS WORKED CALCULATION
     // Only counts time between 8:00 AM and 5:00 PM
     // ==========================================================
-
+    /**
+    * Calculates total worked hours for an employee within a cutoff period.
+    *
+    * Rules:
+    * - Only counts time between 8:00 AM – 5:00 PM
+    * - Applies grace period (<= 8:10 AM treated as 8:00 AM)
+    * - Caps work to 8 hours per day
+    *
+    * @param attendance attendance dataset
+    * @param id employee ID
+    * @param month target month
+    * @param start cutoff start day
+    * @param end cutoff end day
+    * @return total worked hours
+    */
     static double calculateWorkedHours(
             String[][] attendanceRecords,
             String employeeId,
