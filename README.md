@@ -18,6 +18,7 @@ This system was developed as part of an **academic programming project** that de
 * Sample Output
 * How the Code Works
 * Employee Coverage
+* Quality Assurance Test
 * References
 
 ---
@@ -95,8 +96,8 @@ The table below shows how tasks were tracked throughout the project:
 # Monitoring and Updates
 Project progress was monitored using:
 
-📊 Google Sheets (Effort Estimation & Project Plan)
-💬 Gspace (daily updates)
+📊 Google Sheets (Tracking)
+💬 Gspace (Communication)
 📅 Weekly progress meetings
 
 * Reference 
