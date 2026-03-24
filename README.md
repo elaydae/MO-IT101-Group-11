@@ -103,7 +103,7 @@ Project progress was monitored using:
 💬 Gspace (daily updates)
 📅 Weekly progress meetings
 
-Reference (Project Plan Spreadsheet):
+*Reference (Project Plan Spreadsheet):
 https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
 ---
 
@@ -580,7 +580,7 @@ This confirms that the system meets the **functional and accuracy requirements**
 
 
 
-## Supporting File https://docs.google.com/spreadsheets/d/1dPl2252ppA8mLpPNYg4y1R6OM_oI9AJW-wQqP20fbwM/edit?usp=sharing
+* Supporting File https://docs.google.com/spreadsheets/d/1dPl2252ppA8mLpPNYg4y1R6OM_oI9AJW-wQqP20fbwM/edit?usp=sharing
 
 Detailed QA test cases are included in:
 
