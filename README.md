@@ -521,6 +521,72 @@ Employee information includes:
 * Hourly rate
 
 ---
+---
+
+# Quality Assurance Testing
+
+## Purpose
+
+Quality Assurance (QA) Testing was conducted to ensure that the MotorPH Payroll System produces **accurate, consistent, and reliable payroll results** based on the given requirements.
+
+This section validates that:
+
+- Payroll computations are correct  
+- Attendance data is properly processed  
+- Edge cases and invalid inputs are handled  
+
+---
+
+## Sample Test Cases
+
+The system was tested using multiple scenarios, including:
+
+| SCENARIO                   | TEST CASE                   | EXPECTED RESULT                        | Status    |
+|----------------------------|-----------------------------|----------------------------------------|-----------|
+| Valid Login                | Correct username & password | Access granted                         | ✅ Passed |
+| Invalid Login              | Incorrect credentials       | Program terminates                     | ✅ Passed |
+| Employee Lookup            | Existing employee ID        | Displays employee info                 | ✅ Passed |
+| Invalid Employee ID        | Non-existent ID             | Error / no result                      | ✅ Passed |
+| Hours Calculation          | Valid time logs             | Correct hours computed                 | ✅ Passed |
+| Late Login                 | After 8:00 AM               | Reduced working hours                  | ✅ Passed |
+| Payroll Computation        | Full attendance data        | Correct gross & net salary             | ✅ Passed |
+| Deductions                 | Combined cutoff salary      | Correct SSS, PhilHealth, Pag-IBIG, Tax | ✅ Passed |
+| CSV Reading                | Valid CSV file              | Data loaded successfully               | ✅ Passed |
+| Missing CSV                | No file found               | Error handled properly                 | ✅ Passed |
+
+---
+
+## Testing Approach
+
+Testing was performed using:
+
+- Manual test cases  
+- Sample employee records  
+- Actual attendance CSV data  
+
+The outputs were compared against expected payroll results based on the defined rules.
+
+---
+
+## Result Summary
+
+All major functionalities of the system were successfully tested:
+
+- ✔ Accurate payroll computation  
+- ✔ Correct deduction calculations  
+- ✔ Reliable CSV file processing  
+- ✔ Proper handling of invalid inputs  
+
+This confirms that the system meets the **functional and accuracy requirements** specified in the project.
+
+
+
+## Supporting File https://docs.google.com/spreadsheets/d/1dPl2252ppA8mLpPNYg4y1R6OM_oI9AJW-wQqP20fbwM/edit?usp=sharing
+
+Detailed QA test cases are included in:
+
+
+---
 
 # References
 
