@@ -536,8 +536,6 @@ This section validates that:
 - Attendance data is properly processed  
 - Edge cases and invalid inputs are handled  
 
----
-
 ## Sample Test Cases
 
 The system was tested using multiple scenarios, including:
