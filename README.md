@@ -103,7 +103,7 @@ Project progress was monitored using:
 💬 Gspace (daily updates)
 📅 Weekly progress meetings
 
-*Reference (Project Plan Spreadsheet):
+* Reference (Project Plan Spreadsheet):
 https://docs.google.com/spreadsheets/d/1bg2FKkk0l8Fj1jjAYKmEFeB9M2rPCL9t4WCPFp-kOy0/edit?usp=sharing
 ---
 
