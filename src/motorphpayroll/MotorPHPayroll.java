@@ -208,10 +208,10 @@ public class MotorPHPayroll {
             int lastDayOfMonth = getLastDayOfMonth(month, year);
 
             double firstCutoffHours =
-                    calculateWorkedHours(attendanceRecords, employee[0], month, 1, 15);
+                    calculateWorkedHours(attendanceRecords, employee[EMP_ID], month, 1, 15);
 
             double secondCutoffHours =
-                    calculateWorkedHours(attendanceRecords, employee[0], month, 16, lastDayOfMonth);
+                    calculateWorkedHours(attendanceRecords, employee[EMP_ID], month, 16, lastDayOfMonth);
 
             double firstCutoffGross = firstCutoffHours * hourlyRate;
             double secondCutoffGross = secondCutoffHours * hourlyRate;
@@ -267,21 +267,7 @@ public class MotorPHPayroll {
     // HOURS WORKED CALCULATION
     // Only counts time between 8:00 AM and 5:00 PM
     // ==========================================================
-    /**
-    * Calculates total worked hours for an employee within a cutoff period.
-    *
-    * Rules:
-    * - Only counts time between 8:00 AM – 5:00 PM
-    * - Applies grace period (<= 8:10 AM treated as 8:00 AM)
-    * - Caps work to 8 hours per day
-    *
-    * @param attendance attendance dataset
-    * @param id employee ID
-    * @param month target month
-    * @param start cutoff start day
-    * @param end cutoff end day
-    * @return total worked hours
-    */
+
     static double calculateWorkedHours(
             String[][] attendanceRecords,
             String employeeId,
@@ -333,6 +319,14 @@ public class MotorPHPayroll {
                 Integer.parseInt(parts[1])
         };
     }
+    //  Month 
+        static String getMonthName(int month) {
+    String[] months = {
+        "", "January", "February", "March", "April", "May",
+        "June", "July", "August", "September", "October", "November", "December"
+    };
+    return months[month];
+}
 
     // Reads the year from the first matching attendance record for the given employee.
     // The date column uses M/D/YYYY format, so the year is the third part after splitting on "/".
@@ -512,12 +506,13 @@ public class MotorPHPayroll {
         System.out.println("Employee Name: " + employee[2] + " " + employee[1]);
         System.out.println("Birthday: " + employee[3]);
 
-        System.out.println("Cutoff Date: Month " + month + " 1-15");
+        String monthName = getMonthName(month);
+        System.out.println("Cutoff Date: " + monthName + " 1 to " + monthName + " 15");
         System.out.println("Total Hours Worked: " + hours1);
         System.out.println("Gross Salary: " + gross1);
         System.out.println("Net Salary: " + net1);
 
-        System.out.println("Cutoff Date: Month " + month + " 16-" + lastDay);
+        System.out.println("Cutoff Date: " + monthName + " 16 to " + monthName + " " + lastDay);
         System.out.println("Total Hours Worked: " + hours2);
         System.out.println("Gross Salary: " + gross2);
 
