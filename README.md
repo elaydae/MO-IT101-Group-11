@@ -49,8 +49,7 @@ All computations follow the payroll rules provided in the project specification.
 | Name                      | Role                           |
 | ------------------------- | ------------------------------ |
 | Ephraim Elayda            | Programmer / Research          |
-| Ashley Mackenzie Ramos    | Research / Project Coordinator |
-| Ma. Irene Andrea Esguerra | Research / Project Coordinator |
+
 ---
 # Project Plan File (Required Submission)
 
